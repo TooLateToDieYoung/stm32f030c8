@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "description of registers/ADC.md",
+            "file": "description of registers/TIM.md",
             "mode": "preview"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "description of registers/ADC.md",
+                "file": "description of registers/TIM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,9 +88,9 @@
   },
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
-    "description of registers/ADC.md",
+    "description of registers/TIM.md",
     "description of registers/DMA.md",
-    "README.md",
-    "description of registers/TIM.md"
+    "description of registers/ADC.md",
+    "README.md"
   ]
 }

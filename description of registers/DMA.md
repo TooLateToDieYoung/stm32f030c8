@@ -1,4 +1,4 @@
-#### the process of initializing the DMA
+## the process of initializing the DMA
 
 1. Enable the peripheral clock on DMA
     ```C
@@ -53,7 +53,7 @@
     ```
 
 ---
-#### Introduction of DMA1 registers
+## Introduction of DMA1 registers
 
 1. stm32f030c8 has 7 channels of DMA1
     - each channel is connected to some designated peripherals
@@ -71,7 +71,7 @@
     - DMA1_Channelx->CCR   ( DMA_CCRx )
 
 ---
-#### Description of DMA1 registers
+## Description of DMA1 registers
 
 1. DMA interrupt status register (DMA1->ISR) 32bits
     ```C

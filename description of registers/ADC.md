@@ -1,4 +1,4 @@
-#### The process of initializing the ADC1
+## The process of initializing the ADC1
 
 1. open ADC1, GPIOx clocks and set pins mode
 	```C
@@ -96,14 +96,13 @@
 		ADC1->IER |= ??? ;
 		```
 
----
-#### The process of receiving data for ADC1
-```C
-ADC1->CR |= ADC_CR_ADSTART;
-```
+5. Turn on ADC1 when conversion is required
+	```C
+	ADC1->CR |= ADC_CR_ADSTART;
+	```
 
 ---
-#### Register rules of ADC1
+## Introduction of ADC1 registers
 
 1. can write to ADCAL & ADEN if ADEN == 0
 
@@ -114,7 +113,7 @@ ADC1->CR |= ADC_CR_ADSTART;
 		=> IER, CFGRx, SMPR, TR, CHSELR, CCR
 
 ---
-#### Description of ADC1 registers
+## Description of ADC1 registers
 
 1. ADC interrupt and status register ( ADC1->ISR ) 32bits
 
