@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "8f1b9200f8ae07ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "4cea7964a6e8e673",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "description of registers/ADC.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0eeab7fa8b0b7a08",
+    "type": "split",
+    "children": [
+      {
+        "id": "8875321e7e72ce27",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "23043a97808cfb11",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "2e77a9db7429f889",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e86133e5b6faf23b",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7453ef5d3c5505b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71b5e2384c982d11",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "description of registers/ADC.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "4cea7964a6e8e673",
+  "lastOpenFiles": [
+    "description of registers/ADC.md",
+    "description of registers/DMA.md",
+    "README.md",
+    "description of registers/TIM.md"
+  ]
+}
