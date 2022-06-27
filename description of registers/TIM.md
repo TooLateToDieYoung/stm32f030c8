@@ -359,3 +359,72 @@
 |CC4NP|CC4NE|CC4P|CC4E|CC3NP|CC3NE|CC3P|CC3E|CC2NP|CC2NE|CC2P|CC2E|CC1NP|CC1NE|CC1P|CC1E|
 
 ---
+
+8. TIMx counter ( TIMx->CNT ) 16bits
+
+-tx-
+|B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|CNT[15:0]||||||||||||||||
+
+---
+
+9. TIMx prescaler ( TIMx->PSC ) 16bits
+    ```C
+    // ? The counter clock frequency (CK_CNT) 
+    // ? is equal to fCK_PSC / (PSC[15:0] + 1).
+    ```
+
+-tx-
+|B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|PSC[15:0]||||||||||||||||
+
+---
+
+10. TIMx auto-reload register ( TIMx->ARR ) 16bits
+    ```C
+    // ! The counter is blocked while the auto-reload value is null
+    ```
+
+-tx-
+|B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|ARR[15:0]||||||||||||||||
+
+---
+
+11. TIMx repetition counter register (TIMx->RCR) 16bits
+
+-tx-
+|B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|x|x|x|x|x|x|x|x|REP[7:0]||||||||
+
+---
+
+12. TIMx capture/compare register x (TIMx->CCRx) 16bits
+
+    * -- $Output\ Compare\ mode$ ---------------------`
+      ```C
+      /*
+      CCRx is the value to be loaded in the actual capture/compare 1 register (preload value).
+
+      It is loaded permanently if the preload feature is not selected in the TIMx->CCMRx register (bit OCxPE).
+
+      Else the preload value is copied in the active capture/compare x register when an update event occurs.
+
+      The active capture/compare register contains the value to be compared to the counter TIMx->CNT and signaled on OCx output.
+      */
+      ```
+
+    * -- $Input\ Capture\ mode$ ----------------------
+      ```C
+      // ? CCR1 is the counter value transferred by
+      // ? the last input capture x event (ICx).
+      ```
+
+-tx-
+|B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|CCRx[15:0]||||||||||||||||
