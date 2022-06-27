@@ -492,15 +492,15 @@ void Init_Configure(void)
   GPIOA->OSPEEDR |= ( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
 
   // Output push-pull ( PP )
-  GPIOx->OTYPER &= ~((uint16_t)TIM1_CH1);
+  GPIOA->OTYPER &= ~((uint16_t)TIM1_CH1);
   
   // reset to AF
-  GPIOx->MODER  &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
+  GPIOA->MODER  &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
   GPIOA->MODER |= ( (uint32_t)2 << ( TIM1_CH1 * 2 ) );
 
   // Pull-up
-  GPIOx->PUPDR &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
-  GPIOx->PUPDR |= ( (uint32_t)1 << ( TIM1_CH1 * 2 ) );
+  GPIOA->PUPDR &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
+  GPIOA->PUPDR |= ( (uint32_t)1 << ( TIM1_CH1 * 2 ) );
 
   // GPIOx->AFRH for pin 8 -> set AF2 for TIM1_CH1
   GPIOA->AFR[1] &= ~((uint32_t)15);
@@ -572,7 +572,7 @@ void Init_Configure(void)
   TIM1->CR2 &= (uint16_t)(~((uint16_t)TIM_CR2_OIS1N)); // IDLE low
 
   // Compute CCR1 value to generate a duty cycle at 40% for channel 2 and 2N
-  TIM1->CCR1 = (uint16_t) (((uint32_t) 40 * ( TIM1->ARR - 1 )) / 100); 
+  TIM1->CCR1 = (uint16_t) ( ((uint32_t) 40 * ( TIM1->ARR - 1 )) / 100 ); 
 // ----------------------------------------------- end
 
   /* open it
