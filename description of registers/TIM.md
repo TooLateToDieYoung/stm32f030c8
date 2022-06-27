@@ -496,7 +496,7 @@ void Init_Configure(void)
   
   // reset to AF
   GPIOx->MODER  &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
-	GPIOA->MODER |= ( (uint32_t)2 << ( TIM1_CH1 * 2 ) );
+  GPIOA->MODER |= ( (uint32_t)2 << ( TIM1_CH1 * 2 ) );
 
   // Pull-up
   GPIOx->PUPDR &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
