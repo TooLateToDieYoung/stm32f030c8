@@ -428,3 +428,162 @@
 |B15|B14|B13|B12|B11|B10|B9|B8|B7|B6|B5|B4|B3|B2|B1|B0|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |CCRx[15:0]||||||||||||||||
+
+---
+
+## C language example
+
+1. pure counter mode
+```C
+// Using TIM3 to be counter, period time = 4us 
+void Init_Configure(void)
+{
+  // clock : SYSCLK 48MHz -> AHB 48MHz -> APB1 48MHz -> TIM3 48MHz
+  RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
+
+  TIM3->CR1 &= (uint16_t)(~((uint16_t)(
+      TIM_CR1_DIR | // Counter used as upcounter
+      TIM_CR1_CMS | // Edge-aligned mode
+      TIM_CR1_CKD | // Clock division = 0
+      TIM_CR1_OPM | // Counter is not stopped at update event
+      TIM_CR1_URS | // Multiple update event trigger options
+      TIM_CR1_UDIS  // UEV enabled
+    )));
+
+  // let TIM3->ARR register be buffered
+  TIM3->CR1 |= TIM_CR1_ARRE; 
+
+  // TIM3_CLK / ( TIM3->PSC + 1 ) = 48MHz / 4 = 12MHz
+  // TIM3->CNT counts 1 time per ( 1 / 12MHz ) seconds
+  TIM3->PSC = (uint16_t)( 4 - 1 );
+
+  // The period of TIM3->CNT is ( TIM3->ARR + 1 ) = 48 counts
+  // One period is 48 * ( 1 / 12MHz ) seconds = 4us
+  TIM3->ARR = 48 - 1;
+
+  // Generate an update event to reload 
+  // the Prescaler and the Repetition counter values immediately
+  TIM3->EGR = TIM_PSCReloadMode_Immediate; // is same as TIM_EGR_UG;
+
+  /* open it
+    TIM3->SR = 0; // clear status before starting to count
+    TIM3->CR1 |= TIM_CR1_CEN; // Go
+  */
+
+  /* close it
+    TIM3->CR1 &= ~((uint16_t)TIM_CR1_CEN);
+  */
+}
+```
+
+---
+
+2. output compare mode
+```C
+#define TIM1_CH1 GPIO_Pin_8
+
+// Using TIM1 with channel 1 / 1N to PWM2 output
+void Init_Configure(void)
+{
+  // open GPIOA clock
+  RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+
+  // set speed of pin = 50MHz
+  GPIOA->OSPEEDR |= ( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
+
+  // Output push-pull ( PP )
+  GPIOx->OTYPER &= ~((uint16_t)TIM1_CH1);
+  
+  // reset to AF
+  GPIOx->MODER  &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
+	GPIOA->MODER |= ( (uint32_t)2 << ( TIM1_CH1 * 2 ) );
+
+  // Pull-up
+  GPIOx->PUPDR &= ~( (uint32_t)3 << ( TIM1_CH1 * 2 ) );
+  GPIOx->PUPDR |= ( (uint32_t)1 << ( TIM1_CH1 * 2 ) );
+
+  // GPIOx->AFRH for pin 8 -> set AF2 for TIM1_CH1
+  GPIOA->AFR[1] &= ~((uint32_t)15);
+  GPIOA->AFR[1] |= ~((uint32_t)2);
+
+/* TIM1 */
+  // clock : SYSCLK 48MHz -> AHB 48MHz -> APB2 48MHz -> TIM1 48MHz
+  RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;
+
+  TIM1->CR1 &= (uint16_t)(~((uint16_t)(
+      TIM_CR1_DIR  | // Counter used as upcounter
+      TIM_CR1_CMS  | // Edge-aligned mode
+      TIM_CR1_ARRE | // disable auto reload register to be buffered
+      TIM_CR1_CKD  | // Clock division = 0
+      TIM_CR1_OPM  | // Counter is not stopped at update event
+      TIM_CR1_URS  | // Multiple update event trigger options
+      TIM_CR1_UDIS   // UEV enabled
+    )));
+
+  // TIM1_CLK / ( TIM3->PSC + 1 ) = 48MHz / 1 = 48MHz
+  // TIM1->CNT counts 1 time per ( 1 / 48MHz ) seconds
+  TIM1->PSC = (uint16_t)( 1 - 1 );
+
+  // The period of TIM3->CNT is ( TIM3->ARR + 1 ) = 256 counts
+  // One period is 256 * ( 1 / 48MHz ) seconds = 5.333us
+  TIM1->ARR = (uint16_t)( 256 - 1 );
+
+  // Set the Repetition Counter value
+  TIM1->RCR = 0; // just for TIM1, TIM15, TIM16, TIM17
+
+  // Generate an update event to reload 
+  // the Prescaler and the Repetition counter values immediately
+  TIM3->EGR = TIM_PSCReloadMode_Immediate; // is same as TIM_EGR_UG;
+
+/* channel 1 output compare setup */
+// begin ---------------------------------------------
+  // Disable the Channel 1
+  TIM1->CCER &= (uint16_t)(~(uint16_t)TIM_CCER_CC1E);
+  
+  // Set it output mode
+  TIM1->CCMR1 &= (uint16_t)(~((uint16_t)TIM_CCMR1_CC1S));
+
+  // Reset the Output Compare Mode Bits to PWM2
+  TIM1->CCMR1 &= (uint16_t)(~((uint16_t)TIM_CCMR1_OC1M));
+  TIM1->CCMR1 |= TIM_OCMode_PWM2; // channel 1 is active as long as TIM1->CNT > TIM1->CCR1
+  
+  TIM1->CCER |= (uint16_t)(
+      TIM_CCER_CC1P | // Reset the Output Polarity level -> active is high
+      TIM_CCER_CC1E   // Open the channel 1
+    );
+
+  // Reset the channel 1 Ouput Compare IDLE high
+  TIM1->CR2 |= (uint16_t)(TIM_CR2_OIS1);
+// ----------------------------------------------- end
+
+/* channel 1N output compare setup */
+/* the following just for TIM1, TIM15, TIM16, TIM17 */
+// begin ---------------------------------------------
+  // disable channel 1 output N
+  TIM1->CCER &= (uint16_t)(~((uint16_t)TIM_CCER_CC1NE));
+
+  // Reset the Output N Polarity level -> active is low
+  TIM1->CCER &= (uint16_t)(~((uint16_t)TIM_CCER_CC1NP));
+  
+  // enable channel 1 output N
+  TIM1->CCER |= (uint16_t)(TIM_CCER_CC1NE);
+  
+  // Reset the Ouput Compare and Output Compare N IDLE State
+  TIM1->CR2 &= (uint16_t)(~((uint16_t)TIM_CR2_OIS1N)); // IDLE low
+
+  // Compute CCR1 value to generate a duty cycle at 40% for channel 2 and 2N
+  TIM1->CCR1 = (uint16_t) (((uint32_t) 40 * ( TIM1->ARR - 1 )) / 100); 
+// ----------------------------------------------- end
+
+  /* open it
+    TIM1->SR = 0; // clear status before starting to count
+    TIM1->CR1  |= TIM_CR1_CEN;  // Go
+    TIM1->BDTR |= TIM_BDTR_MOE; // release the channel 1 / 1N for PWM output
+  */
+
+  /* close it
+    TIM1->CR1 &= ~((uint16_t)TIM_CR1_CEN);
+    TIM1->BDTR &= ~((uint16_t)TIM_BDTR_MOE); // force channel 1 / 1N to IDLE
+  */
+}
+```

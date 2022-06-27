@@ -341,7 +341,7 @@
 
 ---
 
-#### C language example
+## C language example
 
 1. ADC1 + DMA
 	```C
@@ -358,7 +358,7 @@
 	#define NUMBER_OF_ADC_CHANNEL 2
 	static uint32_t ADCConvertChannels[NUMBER_OF_ADC_CHANNEL] = {0};
 
-	void Init_Configure()
+	void Init_Configure(void)
 	{
 
 	/* setting clock & GPIOx first */

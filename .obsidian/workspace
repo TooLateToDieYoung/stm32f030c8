@@ -52,7 +52,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e86133e5b6faf23b",
@@ -89,8 +90,8 @@
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
     "description of registers/TIM.md",
-    "description of registers/DMA.md",
+    "README.md",
     "description of registers/ADC.md",
-    "README.md"
+    "description of registers/DMA.md"
   ]
 }

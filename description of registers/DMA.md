@@ -1,4 +1,4 @@
-## the process of initializing the DMA
+## The process of initializing the DMA
 
 1. Enable the peripheral clock on DMA
     ```C
