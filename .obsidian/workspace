@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "description of registers/TIM.md",
+            "file": "modules/USART.md",
             "mode": "preview"
           }
         }
@@ -52,8 +52,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "e86133e5b6faf23b",
@@ -69,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "description of registers/TIM.md",
+                "file": "modules/USART.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,9 +88,15 @@
   },
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
-    "description of registers/TIM.md",
-    "README.md",
-    "description of registers/ADC.md",
-    "description of registers/DMA.md"
+    "modules/USART.md",
+    "modules/WWDG.md",
+    "modules/TIM.md",
+    "modules/SPI.md",
+    "modules/RCC.md",
+    "modules/IWDG.md",
+    "modules/I2C.md",
+    "modules/GPIO.md",
+    "modules/DMA.md",
+    "modules/ADC.md"
   ]
 }
