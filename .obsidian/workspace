@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "modules/USART.md",
+            "file": "modules/NVIC.md",
             "mode": "preview"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "modules/USART.md",
+                "file": "modules/NVIC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +88,15 @@
   },
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
+    "modules/NVIC.md",
+    "modules/SysTick.md",
+    "modules/IWDG.md",
     "modules/USART.md",
     "modules/WWDG.md",
     "modules/TIM.md",
     "modules/SPI.md",
     "modules/RCC.md",
-    "modules/IWDG.md",
     "modules/I2C.md",
-    "modules/GPIO.md",
-    "modules/DMA.md",
-    "modules/ADC.md"
+    "modules/GPIO.md"
   ]
 }
