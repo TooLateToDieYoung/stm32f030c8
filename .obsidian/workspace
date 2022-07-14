@@ -7,8 +7,12 @@
         "id": "4cea7964a6e8e673",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Modules/Core Cortex-M0+/SysTick.md",
+            "mode": "preview",
+            "source": false
+          }
         }
       }
     ],
@@ -49,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e86133e5b6faf23b",
@@ -65,6 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Modules/Core Cortex-M0+/SysTick.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,15 +90,15 @@
   },
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
+    "Modules/Core Cortex-M0+/SCB.md",
+    "Modules/Core Cortex-M0+/SysTick.md",
+    "modules/core/SCB.md",
+    "description of registers/TIM.md",
     "modules/SCB.md",
     "modules/SysTick.md",
     "modules/NVIC.md",
     "modules/RCC.md",
     "modules/DMA.md",
-    "modules/ADC.md",
-    "modules/GPIO.md",
-    "modules/IWDG.md",
-    "modules/SPI.md",
-    "modules/TIM.md"
+    "modules/ADC.md"
   ]
 }
