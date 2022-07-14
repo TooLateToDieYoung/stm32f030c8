@@ -4,7 +4,7 @@
 
 # Register Defination
 ```C
-/* The following is defined on <core_cm0.h> */
+/* according to ../datasheets/armv6m.pdf */
 typedef struct {                   // <register name>                | [offset](bytes) | [option]
   volatile uint32_t ISER[1];       // <Interrupt Set Enable reg.>    | [0x0000]        | [R/W]
   /*const*/uint32_t RESERVED0[31]; // <reserved>                     | [0x0004:0x007C] | [ / ]

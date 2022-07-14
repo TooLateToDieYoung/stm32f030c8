@@ -7,7 +7,7 @@
 // ! Do not directly manipulate the registers to configure the NVIC
 // ! as this is not safe for the entire system.
 
-/* The following is defined on <core_cm0.h> */
+/* ./STM32F0xx_StdPeriph_Lib_V1.5.0/Libraries/CMSIS/Include/core_cm0.h */
 typedef struct {
   __IO uint32_t ISER[1];       /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register    */
        uint32_t RESERVED0[31];
