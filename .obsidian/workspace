@@ -7,11 +7,8 @@
         "id": "4cea7964a6e8e673",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "modules/NVIC.md",
-            "mode": "preview"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "modules/NVIC.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,15 +84,15 @@
   },
   "active": "4cea7964a6e8e673",
   "lastOpenFiles": [
-    "modules/NVIC.md",
+    "modules/SCB.md",
     "modules/SysTick.md",
-    "modules/IWDG.md",
-    "modules/USART.md",
-    "modules/WWDG.md",
-    "modules/TIM.md",
-    "modules/SPI.md",
+    "modules/NVIC.md",
     "modules/RCC.md",
-    "modules/I2C.md",
-    "modules/GPIO.md"
+    "modules/DMA.md",
+    "modules/ADC.md",
+    "modules/GPIO.md",
+    "modules/IWDG.md",
+    "modules/SPI.md",
+    "modules/TIM.md"
   ]
 }

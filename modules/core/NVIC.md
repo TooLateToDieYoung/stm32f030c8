@@ -1,7 +1,6 @@
 # Nested Vectored Interrupt Controller
 
 ---
-
 # Register
 ```C
 // ! Do not directly manipulate the registers to configure the NVIC
